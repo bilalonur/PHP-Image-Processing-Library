@@ -9,6 +9,7 @@ Includes:
 Blur Effect => blurEf($url,$level)  ~ 05.09.2021
 Horizontal Edge Detection =>  horizontalEdge($url) ~ 06.09.2021
 Vertical Edge Detection => verticalEdge($url) ~ 06.09.2021
+Laplacian Edge (Outline) => laplacianEdge($url) ~ 06.09.2021
 */
 
 function blurEf($url,$level) {
@@ -42,4 +43,16 @@ imageconvolution($image, $emboss, 1, 0);
 header('Content-Type: image/png');
 imagepng($image, null, 9);
 }
+
+function laplacianEdge($url) {
+$image = imagecreatefrompng($url);
+for ($i = 1; $i <= 2; $i++) {
+$emboss = array(array(-1, -1, -1), array(-1, 8, -1), array(-1, -1, -1));
+imageconvolution($image, $emboss, 1, 0);
+}
+header('Content-Type: image/png');
+imagepng($image, null, 9);
+}
+
+
 ?>
