@@ -1,2 +1,6 @@
 # PHP Image Processing Library
- PHP IMPROCS LIBRRAY
+Image processing with PHP.
+
+ >blurEf($url,$level)       // Blur Effect
+ 
+ 
