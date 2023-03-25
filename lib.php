@@ -10,6 +10,8 @@ Blur Effect => blurEf($url,$level)  ~ 05.09.2021
 Horizontal Edge Detection =>  horizontalEdge($url) ~ 06.09.2021
 Vertical Edge Detection => verticalEdge($url) ~ 06.09.2021
 Laplacian Edge (Outline) => laplacianEdge($url) ~ 06.09.2021
+Gray Scale => grayscale($url) ~ 24.03.2023
+Resize => resize($url, $width, $height) ~ 24.03.2023
 */
 
 function blurEf($url,$level) {
@@ -52,6 +54,33 @@ imageconvolution($image, $emboss, 1, 0);
 }
 header('Content-Type: image/png');
 imagepng($image, null, 9);
+}
+
+function grayscale($url) {
+    $image = imagecreatefrompng($url);
+    imagefilter($image, IMG_FILTER_GRAYSCALE);
+    header('Content-Type: image/png');
+    imagepng($image, null, 9);
+}
+
+function resize($url, $w, $h) {
+  #
+  $image = imagecreatefrompng($url);
+  list($width, $height) = getimagesize($url);
+  $r = $width / $height;
+  if ($w/$h > $r) {
+      $newwidth = $h*$r;
+      $newheight = $h;
+  } else {
+      $newheight = $w/$r;
+      $newwidth = $w;
+  }
+  $dst = imagecreatetruecolor($newwidth, $newheight);
+  imagecopyresampled($dst, $image, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+  header('Content-Type: image/png');
+  imagepng($dst, null, 9);
+
 }
 
 
