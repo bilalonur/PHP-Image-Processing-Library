@@ -12,6 +12,7 @@ Vertical Edge Detection => verticalEdge($url) ~ 06.09.2021
 Laplacian Edge (Outline) => laplacianEdge($url) ~ 06.09.2021
 Gray Scale => grayscale($url) ~ 24.03.2023
 Resize => resize($url, $width, $height) ~ 24.03.2023
+Brightness Adjustment => brightness($url, $level) ~ 24.03.2023
 */
 
 function blurEf($url,$level) {
@@ -64,7 +65,7 @@ function grayscale($url) {
 }
 
 function resize($url, $w, $h) {
-  #
+  #https://stackoverflow.com/a/14649689
   $image = imagecreatefrompng($url);
   list($width, $height) = getimagesize($url);
   $r = $width / $height;
@@ -81,6 +82,13 @@ function resize($url, $w, $h) {
   header('Content-Type: image/png');
   imagepng($dst, null, 9);
 
+}
+
+function brightness($url, $level) {
+    $image = imagecreatefrompng($url);
+    imagefilter($image, IMG_FILTER_BRIGHTNESS, $level);
+    header('Content-Type: image/png');
+    imagepng($image, null, 9);
 }
 
 
