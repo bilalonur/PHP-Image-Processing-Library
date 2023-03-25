@@ -14,7 +14,7 @@ Image processing with PHP.
  >
  >Resize => resize($url, $width, $height) ~ 24.03.2023
  >
- >Brightness Adjustment => brightness($url, $level) ~ 24.03.2023
+ >Brightness Adjustment => brightness($url, $level) ~ 25.03.2023
 
  
  
