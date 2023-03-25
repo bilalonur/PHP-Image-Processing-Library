@@ -9,5 +9,12 @@ Image processing with PHP.
  >Vertical Edge Detection => verticalEdge($url) ~ 06.09.2021
  >
  >Laplacian Edge (Outline) => laplacianEdge($url) ~ 06.09.2021
+ >
+ >Gray Scale => grayscale($url) ~ 24.03.2023
+ >
+ >Resize => resize($url, $width, $height) ~ 24.03.2023
+ >
+ >Brightness Adjustment => brightness($url, $level) ~ 24.03.2023
+
  
  
